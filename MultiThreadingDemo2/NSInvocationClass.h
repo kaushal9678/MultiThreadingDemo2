@@ -12,4 +12,6 @@
 @property (nonatomic,strong)NSOperationQueue *queue;
 -(void)startCounting;
 -(void)printCount;
+-(void)usingNSThread;
+-(void)concatinateTwoStrings:(NSString *)string;
 @end

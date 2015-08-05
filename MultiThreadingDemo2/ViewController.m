@@ -10,13 +10,13 @@
 #import "NSInvocationClass.h"
 @interface ViewController ()
 @property (weak, nonatomic) IBOutlet UILabel *label;
-@property ( nonatomic)  UILabel *label3,*label4;
+@property ( nonatomic)  UILabel *label3,*label4,*label5,*label6;
 
 
 @end
 
 @implementation ViewController
-@synthesize label3,label,label4;
+@synthesize label3,label,label4,label5,label6;
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
@@ -24,7 +24,9 @@
 // call first thread or invoke first operation
     NSInvocationClass*class=[[NSInvocationClass alloc]init];
     [class startCounting];
-    
+    [class usingNSThread];
+    [class concatinateTwoStrings:@"Hello"];
+
 #pragma mark create second label dynamically
     label2=[[UILabel alloc]initWithFrame:CGRectMake(63, 190, 200, 50)];
     label2.backgroundColor=[UIColor redColor];
@@ -39,7 +41,17 @@
     label4=[[UILabel alloc]initWithFrame:CGRectMake(63, 310, 200, 50)];
     label4.backgroundColor=[UIColor redColor];
     [self.view addSubview:label4];
-   
+
+#pragma mark create Fifth label dynamically
+    label5=[[UILabel alloc]initWithFrame:CGRectMake(63, 370, 200, 50)];
+    label5.backgroundColor=[UIColor redColor];
+    [self.view addSubview:label5];
+
+#pragma mark create Sixth label dynamically
+    label6=[[UILabel alloc]initWithFrame:CGRectMake(63, 430, 200, 50)];
+    label6.backgroundColor=[UIColor redColor];
+    [self.view addSubview:label6];
+    
   
 //    dispatch_queue_t queue2=dispatch_queue_create("manjeet", NULL);
 //    dispatch_async(queue2, ^{
@@ -58,7 +70,18 @@
     thread=[[NSThread alloc]initWithTarget:self selector:@selector(callNSThreadMethod) object:nil];
     thread.name=@"pankaj";
     [thread start];
+    
+    NSLog(@"operationQueue Name= %@",operationQueue.name);
+    NSLog(@"operationQueue Name description= %@",operationQueue.name.description);
+    
+    
 }
+#pragma mark method for concatinating two strings
+-(void)concatenateTwoStrings:(NSString*)string{
+    
+    
+}
+
 
 #pragma mark THreading using GCD concept in background
 -(void)updateSecondLabel{
@@ -104,6 +127,7 @@
     [super viewWillAppear:animated];
    // add obeserver for notification name "updateValue" to update the value of label when notification fire
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(updateUI:) name:@"updatedValue" object:nil];
+    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(updateUILabel5:) name:@"updatedValue1" object:nil];
     
 }
 - (void)didReceiveMemoryWarning {
@@ -119,10 +143,34 @@
     NSDictionary *dict=[notification userInfo];
     // get main queue from thread and update the UI using GCD
     
-    dispatch_sync(dispatch_get_main_queue(), ^{
+   
+    
+    dispatch_async(dispatch_get_main_queue(), ^{
         [label setText:[NSString stringWithFormat:@"%@",[dict valueForKey:@"value"]] ];
+            //    [ label5 setText:[NSString stringWithFormat:@"%@",[dict valueForKey:@"value"]]];
     });
    
+    
+}
+-(void)updateUILabel5:(NSNotification*)notification{
+    NSDictionary *dict=[notification userInfo];
+    // get main queue from thread and update the UI using GCD
+    
+    
+  
+    
+    if ([[dict valueForKey:@"value"]integerValue]==500) {
+        
+        if (![[NSThread currentThread]isMainThread]) {
+             [NSThread exit];
+            
+        }
+    }
+    dispatch_sync(dispatch_get_main_queue(), ^{
+        //[label setText:[NSString stringWithFormat:@"%@",[dict valueForKey:@"value"]] ];
+        [ label5 setText:[NSString stringWithFormat:@"%@",[dict valueForKey:@"value"]]];
+    });
+    
 }
 -(void)callNSThreadMethod{
     
@@ -140,7 +188,7 @@
             //return;
         }*/
         
-        if (i==500) {
+        if (i==800) {
             [NSThread exit];
         }
         dispatch_async(dispatch_get_main_queue(), ^{
