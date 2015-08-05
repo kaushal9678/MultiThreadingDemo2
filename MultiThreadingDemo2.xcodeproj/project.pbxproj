@@ -14,6 +14,7 @@
 		04F9B8761B720E66006B2D11 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 04F9B8751B720E66006B2D11 /* Images.xcassets */; };
 		04F9B8791B720E66006B2D11 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04F9B8771B720E66006B2D11 /* LaunchScreen.xib */; };
 		04F9B8851B720E66006B2D11 /* MultiThreadingDemo2Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = 04F9B8841B720E66006B2D11 /* MultiThreadingDemo2Tests.m */; };
+		04F9B8901B720EC8006B2D11 /* NSInvocationClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 04F9B88F1B720EC8006B2D11 /* NSInvocationClass.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -40,6 +41,8 @@
 		04F9B87E1B720E66006B2D11 /* MultiThreadingDemo2Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MultiThreadingDemo2Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		04F9B8831B720E66006B2D11 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		04F9B8841B720E66006B2D11 /* MultiThreadingDemo2Tests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MultiThreadingDemo2Tests.m; sourceTree = "<group>"; };
+		04F9B88E1B720EC8006B2D11 /* NSInvocationClass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NSInvocationClass.h; sourceTree = "<group>"; };
+		04F9B88F1B720EC8006B2D11 /* NSInvocationClass.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NSInvocationClass.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -85,6 +88,8 @@
 				04F9B86D1B720E66006B2D11 /* AppDelegate.m */,
 				04F9B86F1B720E66006B2D11 /* ViewController.h */,
 				04F9B8701B720E66006B2D11 /* ViewController.m */,
+				04F9B88E1B720EC8006B2D11 /* NSInvocationClass.h */,
+				04F9B88F1B720EC8006B2D11 /* NSInvocationClass.m */,
 				04F9B8721B720E66006B2D11 /* Main.storyboard */,
 				04F9B8751B720E66006B2D11 /* Images.xcassets */,
 				04F9B8771B720E66006B2D11 /* LaunchScreen.xib */,
@@ -222,6 +227,7 @@
 				04F9B8711B720E66006B2D11 /* ViewController.m in Sources */,
 				04F9B86E1B720E66006B2D11 /* AppDelegate.m in Sources */,
 				04F9B86B1B720E66006B2D11 /* main.m in Sources */,
+				04F9B8901B720EC8006B2D11 /* NSInvocationClass.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
